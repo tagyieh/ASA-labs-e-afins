@@ -2,7 +2,7 @@
 using namespace std;
 
 void getFriends(int people, int relationships) {
-    int network[people][people] = {}, friends[people][people] = {}, histogram1[people]={};
+    int network[people][people] = {}, friends[people][people] = {}, histogram1[people]={}, histogram2[people]={};
     int total, person, index, _friend, index1;
     
     //Read relationships and add them to network and friends
@@ -32,6 +32,20 @@ void getFriends(int people, int relationships) {
     for (index=0;index<people;index++) {
         cout<<histogram1[index]<<endl;
     }
+
+    //Calculate how many people befriended each person
+    for (index=0;index<people;index++) {
+        total = 0;
+        for (index1=0;index1<people;index1++) {
+            if (friends[index1][index]!=0) total++;
+        }
+        histogram2[total]++;
+    }
+
+    //Print Histogram2
+    cout << "Histograma2" << endl;
+    for (index=0;index<people;index++) 
+        cout << histogram2[index]<<endl;
 
     //Print Network
     for (index=0;index<people;index++) {
